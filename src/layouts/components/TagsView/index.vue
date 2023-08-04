@@ -213,7 +213,7 @@ onMounted(() => {
       color: var(--v3-tagsview-tag-text-color);
       background-color: var(--v3-tagsview-tag-bg-color);
       padding: 0 8px;
-      font-size: 12px;
+      font-size: 15px;
       margin-left: 5px;
       margin-top: 4px;
       &:first-of-type {
@@ -256,7 +256,7 @@ onMounted(() => {
     list-style-type: none;
     padding: 5px 0;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 400;
     color: #333;
     box-shadow: 2px 2px 3px 0 #00000030;

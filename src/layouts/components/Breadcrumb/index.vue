@@ -64,7 +64,7 @@ getBreadcrumb()
 
 .app-breadcrumb.el-breadcrumb {
   display: inline-block;
-  font-size: 14px;
+  font-size: 22px;
   line-height: var(--v3-navigationbar-height);
   margin-left: 8px;
   .no-redirect {
