@@ -78,6 +78,8 @@ const handleLogin = () => {
       <div class="title">
         <img src="@/assets/layouts/favicon.png" />
       </div>
+      <div class="title-word">COMAC导航数据工程室</div>
+
       <div class="content">
         <el-form ref="loginFormRef" :model="loginFormData" :rules="loginFormRules" @keyup.enter="handleLogin">
           <el-form-item prop="username">
@@ -136,6 +138,11 @@ const handleLogin = () => {
 
 <style lang="scss" scoped>
 .login-container {
+  background: url("./comac.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -180,6 +187,12 @@ const handleLogin = () => {
         width: 100%;
         margin-top: 10px;
       }
+    }
+    .title-word {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      font-size: 20px;
     }
   }
 }

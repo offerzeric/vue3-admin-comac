@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { storeToRefs } from "pinia"
 import { useSettingsStore } from "@/store/modules/settings"
-import logo from "@/assets/layouts/favicon.png?url"
-import logoText1 from "@/assets/layouts/favicon.png?url"
-import logoText2 from "@/assets/layouts/favicon.png?url"
+import logo from "@/assets/layouts/comac.png?url"
+import logoText1 from "@/assets/layouts/comac.png?url"
+import logoText2 from "@/assets/layouts/comac.png?url"
 
 interface Props {
   collapse?: boolean
