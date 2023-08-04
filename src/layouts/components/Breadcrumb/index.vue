@@ -64,11 +64,11 @@ getBreadcrumb()
 
 .app-breadcrumb.el-breadcrumb {
   display: inline-block;
-  font-size: 22px;
+  font-size: 23px;
   line-height: var(--v3-navigationbar-height);
   margin-left: 8px;
   .no-redirect {
-    color: #97a8be;
+    color: #474f58;
     cursor: text;
   }
 }

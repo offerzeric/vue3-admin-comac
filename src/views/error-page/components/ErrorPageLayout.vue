@@ -13,6 +13,7 @@
 .error-page {
   height: 100%;
   display: flex;
+  background-color: #004ea2;
   flex-direction: column;
   justify-content: center;
   align-items: center;

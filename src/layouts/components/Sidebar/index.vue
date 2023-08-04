@@ -128,6 +128,7 @@ const tipLineWidth = computed(() => {
 :deep(.el-sub-menu .el-menu-item),
 :deep(.el-menu--horizontal .el-menu-item) {
   height: v-bind(sidebarMenuItemHeight);
+  font-size: 16px;
   line-height: v-bind(sidebarMenuItemHeight);
   &.is-active,
   &:hover {

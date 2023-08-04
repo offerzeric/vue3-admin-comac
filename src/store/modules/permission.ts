@@ -10,6 +10,7 @@ const hasPermission = (roles: string[], route: RouteRecordRaw) => {
   return routeRoles ? roles.some((role) => routeRoles.includes(role)) : true
 }
 
+//记录该用户有的权限
 const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: string[]) => {
   const res: RouteRecordRaw[] = []
   routes.forEach((route) => {
@@ -30,7 +31,8 @@ export const usePermissionStore = defineStore("permission", () => {
 
   const setRoutes = (roles: string[]) => {
     const accessedRoutes = asyncRouteSettings.open ? filterAsyncRoutes(asyncRoutes, roles) : asyncRoutes
-    routes.value = constantRoutes.concat(accessedRoutes)
+    // routes.value = constantRoutes.concat(accessedRoutes)
+    routes.value = constantRoutes
     dynamicRoutes.value = accessedRoutes
   }
 
