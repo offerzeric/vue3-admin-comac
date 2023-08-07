@@ -3,7 +3,7 @@ import XLSX from "xlsx"
 let result_all_xlsxs_names = []
 import axios from "axios"
 import { onMounted } from "vue"
-import { ElMessage } from "element-plus"
+import { ElMessage, ElLoading } from "element-plus"
 
 onMounted(() => {
   /**
@@ -28,13 +28,13 @@ onMounted(() => {
       console.log("没有选择文件上传，删除已经在源文件列表中的上传历史.")
       //清空excel预览面板的显示
       // eslint-disable-next-line prettier/prettier
-      sourceFilesUploader.files = curFiles;
+      sourceFilesUploader.files = curFiles
       // eslint-disable-next-line prettier/prettier
-      (container as HTMLElement).innerHTML = "";
+      ;(container as HTMLElement).innerHTML = ""
       // eslint-disable-next-line prettier/prettier
-      (btnsPanel as HTMLElement).innerHTML = "";
+      ;(btnsPanel as HTMLElement).innerHTML = ""
       // eslint-disable-next-line prettier/prettier
-      (sourceListGroup as HTMLElement).innerHTML =
+      ;(sourceListGroup as HTMLElement).innerHTML =
         '<a disabled class="source-list-group-start custom-page-title"' + ">源文件列表</a>"
     } else {
       console.log("源文件上传完成后，展示源文件列表.")
@@ -119,6 +119,7 @@ onMounted(() => {
     temp.id = fileTemp.name
     temp.innerHTML = fileTemp.name
     temp.style.fontSize = "14px"
+    temp.className = "el-button"
     //转换成可预览的excel
     temp.addEventListener("click", async (e: any) => {
       e.preventDefault()
@@ -140,7 +141,7 @@ onMounted(() => {
         console.log(sheetName)
         const btn = document.createElement("button")
         //按钮的样式
-        btn.className = "custom_button_sheet"
+        btn.className = "custom_button_sheet el-button"
         btn.style.fontSize = "14px"
         btn.innerHTML = sheetName
         //给这个sheet按钮添加点击事件
@@ -172,6 +173,7 @@ onMounted(() => {
     const customForm = document.querySelector(".custom_form") as any
     customForm.addEventListener("submit", () => {
       const formData = new FormData(customForm)
+      const loadingInstance = ElLoading.service({ fullscreen: true })
       axios
         .post(domain + "/code/do424Upload", formData, {
           headers: {
@@ -184,6 +186,7 @@ onMounted(() => {
           }
         })
         .then((res) => {
+          loadingInstance.close()
           console.log(res)
           if (res.data.flag) {
             ElMessage.success("源文件上传成功")
@@ -207,6 +210,8 @@ onMounted(() => {
     // let domain = "http://192.168.3.9:9092";
     const domain = "http://127.0.0.1:9092"
     console.log(domain + "/code/do424Code")
+    const loadingInstance = ElLoading.service({ fullscreen: true })
+
     //调用后端424编码接口
     await axios
       .get(domain + "/code/do424Code", {
@@ -220,6 +225,7 @@ onMounted(() => {
         }
       })
       .then((res) => {
+        loadingInstance.close()
         //res即接收到的结果
         console.log(res)
         if (res.data.flag == 1) {
@@ -295,6 +301,7 @@ onMounted(() => {
     const domain = "http://127.0.0.1:9092"
     //调用后端下载文件接口
     console.log(domain + "/code/do424Download")
+    const loadingInstance = ElLoading.service({ fullscreen: true })
     await axios
       .get(domain + "/code/do424Download", {
         headers: {
@@ -309,6 +316,7 @@ onMounted(() => {
         }
       })
       .then((res) => {
+        loadingInstance.close()
         console.log(res)
         if (res.status == 200) {
           if (window.navigator && (window.navigator as any).msSaveOrOpenBlob) {
@@ -344,25 +352,18 @@ onMounted(() => {
   function showCodeDebugMsg(result_all_xlsxs: any) {
     let coding_msg_panel = document.querySelector(".coding-msg-panel") as any
     coding_msg_panel.innerHTML = ""
-    //创建数组存储返回信息，用于维护展示信息的顺序
-    const ordered_array = []
     for (const each of result_all_xlsxs) {
-      for (const key in each) {
-        //把返回的字典的所有key存在数组中
-        ordered_array.push(key)
-      }
-      for (const index of ordered_array) {
-        //根据数组中存储的每个key拿到对应的debug信息值
+      for (const item of Object.values(each)) {
         const temp = document.createElement("div")
-        temp.innerHTML += each[index]
-        // var coding_msg_panel = document.querySelector(".coding-msg-panel")
+        temp.innerHTML += item
+        coding_msg_panel = document.querySelector(".coding-msg-panel") as any
         //添加每个div的debug信息
         coding_msg_panel.appendChild(temp)
       }
-      //换行
-      // var coding_msg_panel = document.querySelector(".coding-msg-panel")
-      coding_msg_panel += "<br>"
     }
+    //换行
+    coding_msg_panel = document.querySelector(".coding-msg-panel") as any
+    coding_msg_panel += "<br>"
   }
 })
 </script>
