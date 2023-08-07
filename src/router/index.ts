@@ -41,13 +41,13 @@ export const constantRoutes: RouteRecordRaw[] = [
   },
   {
     path: "/",
-    redirect: "/code"
+    redirect: "/code-menu"
   },
 
   {
-    path: "/code",
+    path: "/code-menu",
     component: Layouts,
-    redirect: "/code/tool",
+    redirect: "/code-menu/tool",
     name: "tool",
     meta: {
       title: "编码工具",
@@ -56,7 +56,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: "tool",
-        redirect: "/code/tool/424code",
+        redirect: "/code-menu/tool/424code",
         children: [
           {
             path: "424code",

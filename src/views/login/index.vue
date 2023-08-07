@@ -40,7 +40,8 @@ const handleLogin = () => {
     if (valid) {
       loading.value = true
       useUserStore()
-        .login(loginFormData)
+        // .login(loginFormData)
+        .login()
         .then(() => {
           router.push({ path: "/" })
         })
