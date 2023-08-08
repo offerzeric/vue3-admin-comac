@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import XLSX from "xlsx"
-let result_all_xlsxs_names = []
 import axios from "axios"
 import { onMounted } from "vue"
 import { ElMessage, ElLoading } from "element-plus"
 
 onMounted(() => {
+  let result_all_xlsxs_names = []
   /**
    * 索引需要添加交互的html元素
    */
@@ -274,18 +274,6 @@ onMounted(() => {
   //   //创建可以添加到结果列表的a标签
   //   const temp = document.createElement("a") as HTMLAnchorElement
   //   temp.id = each
-  //   const dataToggle = document.createAttribute("data-toggle")
-  //   dataToggle.value = "list"
-  //   temp.setAttributeNode(dataToggle)
-  //   const role = document.createAttribute("role")
-  //   role.value = "tab"
-  //   temp.setAttributeNode(role)
-  //   temp.href = ""
-  //   const ariaControls = document.createAttribute("aria-controls")
-  //   ariaControls.value = each
-  //   temp.setAttributeNode(ariaControls)
-  //   temp.innerHTML = "output-" + each
-  //   temp.ariaDisabled = "true"
   //   const resultListGroup = document.querySelector(".result-list-group") as any
   //   //在列表中添加该a标签
   //   resultListGroup.appendChild(temp)
@@ -356,6 +344,7 @@ onMounted(() => {
       for (const item of Object.values(each)) {
         const temp = document.createElement("div")
         temp.innerHTML += item
+        temp.style.color = "black"
         coding_msg_panel = document.querySelector(".coding-msg-panel") as any
         //添加每个div的debug信息
         coding_msg_panel.appendChild(temp)
