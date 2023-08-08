@@ -167,8 +167,8 @@ onMounted(() => {
    * @param {*} curFiles
    */
   async function callUploadFiles() {
-    // let domain = "http://192.168.3.9:9092";
-    const domain = "http://127.0.0.1:9092"
+    const domain = "http://192.168.3.9:9092"
+    // const domain = "http://127.0.0.1:9092"
     console.log(domain + "/code/do424Upload")
     const customForm = document.querySelector(".custom_form") as any
     customForm.addEventListener("submit", () => {
@@ -207,8 +207,8 @@ onMounted(() => {
    */
   async function startCode() {
     console.log("开始对源文件编码.")
-    // let domain = "http://192.168.3.9:9092";
-    const domain = "http://127.0.0.1:9092"
+    const domain = "http://192.168.3.9:9092"
+    // const domain = "http://127.0.0.1:9092"
     console.log(domain + "/code/do424Code")
     const loadingInstance = ElLoading.service({ fullscreen: true })
 
@@ -285,8 +285,8 @@ onMounted(() => {
    */
   async function downloadSingleCode(filenameParam: any) {
     console.log("下载424编码.")
-    // let domain = "http://192.168.3.9:9092";
-    const domain = "http://127.0.0.1:9092"
+    const domain = "http://192.168.3.9:9092"
+    // const domain = "http://127.0.0.1:9092"
     //调用后端下载文件接口
     console.log(domain + "/code/do424Download")
     const loadingInstance = ElLoading.service({ fullscreen: true })
